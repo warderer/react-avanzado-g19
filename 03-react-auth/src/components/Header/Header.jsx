@@ -1,3 +1,5 @@
+import './Header.scss'
+
 const Header = () => {
   return (
     <nav className='header'>

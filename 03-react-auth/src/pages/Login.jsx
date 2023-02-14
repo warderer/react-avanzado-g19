@@ -1,4 +1,5 @@
 import logo from '@/assets/react.svg'
+import '@/assets/css/form.css'
 
 const Login = () => {
   return (

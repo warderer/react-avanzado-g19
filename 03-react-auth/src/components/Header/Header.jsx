@@ -1,24 +1,25 @@
 import './Header.scss'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
     <nav className='header'>
-      <a href='/' className='header__logo'>LOGO</a>
+      <Link to='/' className='header__logo'>LOGO</Link>
       <ul className='header__nav-list'>
         <li className='header__list-item'>
-          <a href='/' className='header__item-link header__item-link--is-active'>Home</a>
+          <Link to='/' className='header__item-link header__item-link--is-active'>Home</Link>
         </li>
         <li className='header__list-item'>
-          <a href='/dashboard' className='header__item-link'>Dashboard</a>
+          <Link to='/dashboard' className='header__item-link'>Dashboard</Link>
         </li>
         <li className='header__list-item'>
-          <a href='/secret' className='header__item-link'>Secret</a>
+          <Link to='/secret' className='header__item-link'>Secret</Link>
         </li>
         <li className='header__list-item'>
-          <a href='/login' className='header__item-link'>Login</a>
+          <Link to='/login' className='header__item-link'>Login</Link>
         </li>
         <li className='header__list-item'>
-          <a href='/signup' className='header__item-link'>Signup</a>
+          <Link to='/signup' className='header__item-link'>Signup</Link>
         </li>
       </ul>
     </nav>

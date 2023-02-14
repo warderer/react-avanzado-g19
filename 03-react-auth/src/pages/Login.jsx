@@ -1,10 +1,20 @@
 import logo from '@/assets/react.svg'
 import '@/assets/css/form.css'
+import useForm from '@/hooks/useForm'
 
 const Login = () => {
+  const sendData = (data) => {
+    console.log('Data submit del form login', data)
+  }
+
+  const { input, handleInputChange, handleSubmit } = useForm(sendData, {
+    email: '',
+    password: ''
+  })
+
   return (
     <main className='form-signin w-100 m-auto'>
-      <form>
+      <form onSubmit={handleSubmit}>
         <img className='mb-4' src={logo} alt='' width='72' height='57' />
         <h1 className='h3 mb-3 fw-normal'>Please sign in</h1>
         <div className='form-floating'>
@@ -13,8 +23,8 @@ const Login = () => {
             className='form-control'
             id='floatingInput'
             name='email'
-            value=''
-            onChange={() => {}}
+            value={input.email}
+            onChange={handleInputChange}
             placeholder='name@example.com'
           />
           <label htmlFor='floatingInput'>Email address</label>
@@ -25,8 +35,8 @@ const Login = () => {
             className='form-control'
             id='floatingPassword'
             name='password'
-            value=''
-            onChange={() => {}}
+            value={input.password}
+            onChange={handleInputChange}
             placeholder='Password'
           />
           <label htmlFor='floatingPassword'>Password</label>

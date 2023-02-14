@@ -1,10 +1,24 @@
 import logo from '@/assets/react.svg'
 import '@/assets/css/form.css'
+import { useNavigate } from 'react-router-dom'
+import { loginUser } from '@/services/userServices'
 import useForm from '@/hooks/useForm'
 
 const Login = () => {
-  const sendData = (data) => {
-    console.log('Data submit del form login', data)
+  const navigate = useNavigate()
+
+  const sendData = async (data) => {
+    try {
+      const result = await loginUser(data)
+      console.log(result)
+      if (result.status === 200) {
+        // Guardar el token en localstorage del navegador
+        window.localStorage.setItem('token', result.data.token)
+        navigate('/')
+      }
+    } catch (error) {
+
+    }
   }
 
   const { input, handleInputChange, handleSubmit } = useForm(sendData, {

@@ -1,10 +1,22 @@
 import logo from '@/assets/react.svg'
 import '@/assets/css/form.css'
 import useForm from '@/hooks/useForm'
+import { useNavigate } from 'react-router-dom'
+import { registerUser } from '@/services/userServices'
 
 const Signup = () => {
-  const sendData = (data) => {
-    console.log('Data submit del form', data)
+  const navigate = useNavigate()
+
+  const sendData = async (data) => {
+    try {
+      const result = await registerUser(data)
+      console.log(result)
+      if (result.status === 201) {
+        navigate('/login')
+      }
+    } catch (error) {
+      console.log('Ocurrio un error en Login: ' + error.message)
+    }
   }
 
   const { input, handleInputChange, handleSubmit } = useForm(sendData, {

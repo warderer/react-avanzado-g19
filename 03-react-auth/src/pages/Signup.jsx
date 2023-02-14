@@ -1,10 +1,23 @@
 import logo from '@/assets/react.svg'
 import '@/assets/css/form.css'
+import useForm from '@/hooks/useForm'
 
 const Signup = () => {
+  const sendData = (data) => {
+    console.log('Data submit del form', data)
+  }
+
+  const { input, handleInputChange, handleSubmit } = useForm(sendData, {
+    first_name: '',
+    last_name: '',
+    gender: '',
+    email: '',
+    password: ''
+  })
+
   return (
     <main className='form-signin w-100 m-auto'>
-      <form>
+      <form onSubmit={handleSubmit}>
         <img className='mb-4' src={logo} alt='' width='72' height='57' />
         <h1 className='h3 mb-3 fw-normal'>Please sign up</h1>
         <div className='form-floating'>
@@ -13,8 +26,8 @@ const Signup = () => {
             className='form-control'
             id='first_name'
             name='first_name'
-            value=''
-            onChange={() => {}}
+            value={input.first_name}
+            onChange={handleInputChange}
             placeholder='John'
           />
           <label htmlFor='first_name'>First Name</label>
@@ -26,8 +39,8 @@ const Signup = () => {
             className='form-control'
             id='last_name'
             name='last_name'
-            value=''
-            onChange={() => {}}
+            value={input.last_name}
+            onChange={handleInputChange}
             placeholder='Doe'
           />
           <label htmlFor='last_name'>Last Name</label>
@@ -37,8 +50,8 @@ const Signup = () => {
             className='form-select'
             id='gender'
             name='gender'
-            value=''
-            onChange={() => {}}
+            value={input.gender}
+            onChange={handleInputChange}
           >
             <option value=''>Choose...</option>
             <option value='M'>Male</option>
@@ -52,8 +65,8 @@ const Signup = () => {
             className='form-control'
             id='email'
             name='email'
-            value=''
-            onChange={() => {}}
+            value={input.email}
+            onChange={handleInputChange}
             placeholder='name@example.com'
           />
           <label htmlFor='email'>Email address</label>
@@ -64,8 +77,8 @@ const Signup = () => {
             className='form-control'
             id='password'
             name='password'
-            value=''
-            onChange={() => {}}
+            value={input.password}
+            onChange={handleInputChange}
             placeholder='Password'
           />
           <label htmlFor='password'>Password</label>

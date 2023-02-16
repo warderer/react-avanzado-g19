@@ -12,6 +12,9 @@ export const AuthProvider = (props) => {
   const login = (token) => {
     // Guardar el token en localstorage del navegador
     window.localStorage.setItem('token', token)
+    const decoded = jwt_decode(token)
+    // Descodifica el token
+    setUser(decoded)
     setIsAuth(true)
   }
 

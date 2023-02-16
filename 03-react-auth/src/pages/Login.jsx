@@ -3,8 +3,11 @@ import '@/assets/css/form.css'
 import { useNavigate } from 'react-router-dom'
 import { loginUser } from '@/services/userServices'
 import useForm from '@/hooks/useForm'
+import { useContext } from 'react'
+import { AuthContext } from '@/context/AuthContext'
 
 const Login = () => {
+  const { login } = useContext(AuthContext)
   const navigate = useNavigate()
 
   const sendData = async (data) => {
@@ -12,8 +15,8 @@ const Login = () => {
       const result = await loginUser(data)
       console.log(result)
       if (result.status === 200) {
-        // Guardar el token en localstorage del navegador
-        window.localStorage.setItem('token', result.data.token)
+        const token = result.data.token
+        login(token)
         navigate('/')
       }
     } catch (error) {

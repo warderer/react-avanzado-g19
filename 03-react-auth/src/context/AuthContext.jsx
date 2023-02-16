@@ -26,11 +26,10 @@ export const AuthProvider = (props) => {
     if (token) {
       // obtener la info usuario, ocupamos descodificar el token jwt
       const decoded = jwt_decode(token)
-      console.log(decoded)
       setIsAuth(true)
       setUser(decoded)
     }
-  })
+  }, [])
 
   const values = {
     isAuth,

@@ -3,7 +3,7 @@ import { AuthContext } from '@/context/AuthContext'
 import { getSingleUser } from '@/services/userServices'
 
 const Dashboard = () => {
-  const { isAuth, user } = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
   const [userData, setUserData] = useState({})
 
   useEffect(() => {
